@@ -102,22 +102,67 @@ try:
 
     # Select School
     driver.find_element(By.CSS_SELECTOR, ".w-full:nth-child(3) > .w-full > .relative > .w-full").click()
-    driver.find_element(By.CSS_SELECTOR, ".px-4:nth-child(2)").click()
+
+    # Wait for the dropdown options to load
+    dropdown_options = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".w-full:nth-child(3) .relative > .w-full .px-4"))
+    )
+
+    # Iterate through dropdown options and find the one containing the desired text
+    option_found = False
+    for option in dropdown_options:
+        if option.text.strip() == "Riverdale Elementary School":
+            option.click()
+            option_found = True
+            print("Clicked on the option: 'Riverdale Elementary School'")
+            break
+
+    if not option_found:
+        print("Option 'Riverdale Elementary School' not found in the dropdown.")
 
 
 
     # Select Group 
     driver.find_element(By.CSS_SELECTOR, ".w-full:nth-child(4) .relative > .w-full").click()
-    target_element = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, ".px-4:nth-child(4)"))
+    
+    # Wait for the dropdown options to load
+    dropdown_options = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".w-full:nth-child(4) .relative > .w-full .px-4"))
     )
-    target_element.click()
+
+    # Iterate through dropdown options and find the one containing the desired text
+    option_found = False
+    for option in dropdown_options:
+        if option.text.strip() == "Math Wizards":
+            option.click()
+            option_found = True
+            print("Clicked on the option: 'Math Wizards'")
+            break
+
+    if not option_found:
+        print("Option 'Math Wizards' not found in the dropdown.")
 
 
 
     # Select Teacher 
     driver.find_element(By.CSS_SELECTOR, ".w-full:nth-child(5) .relative > .w-full").click()
-    driver.find_element(By.CSS_SELECTOR, ".px-4:nth-child(6)").click()
+    
+    # Wait for the dropdown options to load
+    dropdown_options = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".w-full:nth-child(5) .relative > .w-full .px-4"))
+    )
+
+    # Iterate through dropdown options and find the one containing the desired text
+    option_found = False
+    for option in dropdown_options:
+        if option.text.strip() == "David Wilson":
+            option.click()
+            option_found = True
+            print("Clicked on the option: 'David Wilson'")
+            break
+
+    if not option_found:
+        print("Option 'David Wilson' not found in the dropdown.")
 
 
     # <<<<<<<<<<<<<<<<<<       TITLE       >>>>>>>>>>>>>>>>>>>>>>
@@ -127,7 +172,7 @@ try:
     element = driver.find_element(By.NAME, "title")
     element.click()
     element.clear()
-    element.send_keys("Game Design Class")
+    element.send_keys("Game Design Class 002")
 
 
     # <<<<<<<<<<<<<<<<<<       CREATE - MEETING       >>>>>>>>>>>>>>>>>>>>>>
